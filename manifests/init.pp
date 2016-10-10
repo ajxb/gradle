@@ -41,28 +41,31 @@ class gradle (
   $deamon = true,
   ){
 
+    package {'unzip':
+      ensure => present,
+    }
+
     $download_url = "https://services.gradle.org/distributions/gradle-${version}-all.zip"
 
-    archive {"gradle-${$version}-all.zip":
-      ensure     => present,
-      url        => download_url,
-      checksum   => false,
-      src_target => '/var/tmp',
-      target     => '/opt',
-      root_dir   => "gradle-${version}",
-      extension  => 'zip',
-      timeout    => $timeout,
+    archive { "gradle-${version}":
+      ensure           => present,
+      url              => $download_url,
+      target           => '/opt/',
+      follow_redirects => true,
+      extension        => 'zip',
+      checksum         => false,
+      src_target       => '/tmp'
     }
 
     file { '/opt/gradle':
       ensure  => link,
       target  => "/opt/gradle-${version}",
-      require => Archive["gradle-${version}-all.zip"],
+      require => Archive["gradle-${version}"],
     }
 
     file { '/etc/profile.d/gradle.sh':
       ensure  => file,
       mode    => '0644',
-      content => template('gradle.sh.erb'),
+      content => template("${module_name}/gradle.sh.erb"),
     }
 }
