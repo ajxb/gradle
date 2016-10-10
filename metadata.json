@@ -1,0 +1,16 @@
+{
+  "name": "cosaquee/gradle",
+  "version": "0.1.0",
+  "author": "Karol Kozakowski",
+  "summary": "Installs Gradle build system",
+  "license": "Apache-2.0",
+  "source": "",
+  "project_page": null,
+  "issues_url": null,
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
+    {"name":"puppet/archive","version_requirement":">= 1.1.2"},
+    {"name":"maestrodev/wget","version_requirement":">= 1.7.3"}
+  ],
+  "data_provider": null
+}
