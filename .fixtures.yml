@@ -1,0 +1,5 @@
+fixtures:
+  repositories:
+    archive: https://github.com/camptocamp/puppet-archive.git
+  symlinks:
+    gradle: "#{source_dir}"

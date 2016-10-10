@@ -1,5 +1,5 @@
-GRADLE_HOME=/opt/gradle
-PATH=/opt/gradle/bin:$PATH
-<% if @daemon %>
-  export GRADLE_OPTS="-Dorg.gradle.daemon=true"
+GRADLE_HOME=<%= @gradle_home %>
+PATH=<%= @gradle_home %>/bin:$PATH
+<% if @gradle_opts %>
+GRADLE_OPTS="<%= @gradle_opts %>"
 <% end %>

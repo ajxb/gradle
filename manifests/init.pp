@@ -37,24 +37,27 @@
 #
 class gradle (
   $version = '3.0',
-  $timeout = '0',
+  $target = '/opt',
+  $gradle_opts = undef,
   $deamon = true,
-  ){
+  ) {
 
     package {'unzip':
       ensure => present,
     }
 
     $download_url = "https://services.gradle.org/distributions/gradle-${version}-all.zip"
+    $gradle_home = "${target}/gradle"
 
     archive { "gradle-${version}":
       ensure           => present,
       url              => $download_url,
-      target           => '/opt/',
+      target           => $target,
       follow_redirects => true,
       extension        => 'zip',
       checksum         => false,
-      src_target       => '/tmp'
+      src_target       => '/tmp',
+      require          => Package['unzip'],
     }
 
     file { '/opt/gradle':
@@ -67,5 +70,10 @@ class gradle (
       ensure  => file,
       mode    => '0644',
       content => template("${module_name}/gradle.sh.erb"),
+      before  => Exec['source gradle.sh'],
+    }
+
+    exec { 'source gradle.sh':
+      command => "/bin/bash -c 'source /etc/profile.d/gradle.sh'",
     }
 }
