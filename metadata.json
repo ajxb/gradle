@@ -1,15 +1,15 @@
 {
-  "name": "Cosaquee/gradle",
-  "version": "0.3.0",
+  "name": "ajxb/gradle",
+  "version": "0.4.0",
   "author": "Karol Kozakowski",
   "summary": "Installs Gradle build system",
   "license": "Apache-2.0",
-  "source": "https://github.com/Cosaquee/gradle",
-  "project_page": "https://github.com/Cosaquee/gradle",
-  "issues_url": "https://github.com/Cosaquee/gradle",
+  "source": "https://github.com/ajxb/gradle",
+  "project_page": "https://github.com/ajxb/gradle",
+  "issues_url": "https://github.com/ajxb/gradle",
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 4.12.0"},
-    {"name":"camptocamp-archive","version_requirement":">= 0.9.0"}
+    {"name":"puppet-archive","version_requirement":">= 1.1.2"}
   ],
   "operatingsystem_support": [
     {

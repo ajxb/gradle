@@ -42,28 +42,27 @@ class gradle (
   $deamon = true,
   ) {
 
-    package {'unzip':
-      ensure => present,
+    if !defined(Package['unzip']) {
+      package {'unzip':
+        ensure => present,
+      }
     }
 
     $download_url = "https://services.gradle.org/distributions/gradle-${version}-all.zip"
     $gradle_home = "${target}/gradle"
 
-    archive { "gradle-${version}":
+    archive { "/tmp/gradle-${version}.zip":
       ensure           => present,
-      url              => $download_url,
-      target           => $target,
-      follow_redirects => true,
-      extension        => 'zip',
-      checksum         => false,
-      src_target       => '/tmp',
+      source           => $download_url,
+      extract          => true,
+      extract_path     => $target,
       require          => Package['unzip'],
     }
 
     file { '/opt/gradle':
       ensure  => link,
       target  => "/opt/gradle-${version}",
-      require => Archive["gradle-${version}"],
+      require => Archive["/tmp/gradle-${version}.zip"],
     }
 
     file { '/etc/profile.d/gradle.sh':
