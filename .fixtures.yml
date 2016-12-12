@@ -1,5 +1,5 @@
 fixtures:
   repositories:
-    archive: https://github.com/camptocamp/puppet-archive.git
+    archive: https://github.com/voxpupuli/puppet-archive.git
   symlinks:
     gradle: "#{source_dir}"

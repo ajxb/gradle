@@ -29,6 +29,7 @@
 # -------
 #
 # Karol Kozakowski <cosaquee@gmail.com>
+# Adam Butler <adam.j.butler@gmail.com>
 #
 # Copyright
 # ---------
@@ -52,11 +53,11 @@ class gradle (
     $gradle_home = "${target}/gradle"
 
     archive { "/tmp/gradle-${version}.zip":
-      ensure           => present,
-      source           => $download_url,
-      extract          => true,
-      extract_path     => $target,
-      require          => Package['unzip'],
+      ensure       => present,
+      source       => $download_url,
+      extract      => true,
+      extract_path => $target,
+      require      => Package['unzip'],
     }
 
     file { '/opt/gradle':
