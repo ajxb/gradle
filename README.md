@@ -1,35 +1,21 @@
-# gradle
+#Gradle
 
-#### Table of Contents
+####Table of Contents
 
 1. [Description](#description)
 1. [Setup - The basics of getting started with gradle](#setup)
-    * [What gradle affects](#what-gradle-affects)
-    * [Setup requirements](#setup-requirements)
     * [Beginning with gradle](#beginning-with-gradle)
-1. [Usage - Configuration options and additional functionality](#usage)
-1. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-1. [Limitations - OS compatibility, etc.](#limitations)
-1. [Development - Guide for contributing to the module](#development)
 
-## Description
+##Description
 
-Module that install and manage Gradle build system.
+The Gradle module installs and manages the Gradle build tool.
 
 ## Setup
 
-### What gradle affects **OPTIONAL**
-
-* Dependencies:
-  * puppet/archive
-
 ### Beginning with gradle
 
-```puppet
-include gradle
-```
+`include 'gradle'` is enough to get you up and running. If you wish to pass in parameters specifying which version to use, then:
 
-If you want to install specific version use `version` parameter
 ```puppet
   class {'gradle':
     version => '2.14',
