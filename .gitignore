@@ -26,3 +26,5 @@ acceptance/.bundle
 *~
 /*.samples
 .tmp/
+spec/fixtures/manifests/
+spec/fixtures/modules/
